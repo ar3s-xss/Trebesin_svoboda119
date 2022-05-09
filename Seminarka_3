@@ -1,0 +1,140 @@
+\documentclass[12pt,a4paper,notitlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage{graphicx}
+\graphicspath{ {ER Diagram.png} }
+
+\begin{document}
+
+\title{Databáze Voličů}
+\author{ "BROM, SVOBODA R." }
+\date{03. 11. 2021}
+\maketitle
+
+\begin{abstract}
+Tento dokument byl vypracovaný společně se všemi členy týmu a ověřuje základní znalosti \LaTeX{}, databází a projektového řízení.
+
+Tým pracoval samostatně a využíval všechny dostupné materiály na Moodle nebo internetu. Veškeré licenční a právní náležitosti jsou upraveny v tomto dokumentu.
+
+Těm, který není tento dokument určen nemají žádné právo na využití obsahu tohoto dokumentu.
+
+Veškerá data osob a předmětů jsou smyšlená a nezakládají se na skutečnosti.
+\end{abstract}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+
+\section{Popis databáze}
+Databáze obsahuje volební data v ČR. 
+Databáze je vytvořena na jazyce MySQL a využívá veškeré technologické vlastnosti této DB.
+\newpage
+\section{Licenční informace a HW požadavky}
+\subsection{Licence}
+Mozilla Public License 2.0 (MPL). \\
+© 2021 Microsoft Corporation.
+ Copyright (C) 2007 Free Software Foundation, Inc.
+\subsection{Hardware}
+ŠKOLNÍ PC
+\subsection{Software}
+Mozilla FireFox \\
+Overleaf \\
+pgmodeler
+
+\newpage
+\section{Databázová struktura}
+\subsection{ER diagram}
+\includegraphics[width=160mm]{ER Diagram.png} 
+\subsection{Tabulka Person}
+\subsubsection{Struktura}
+	first_name varchar(15) \\
+  last_name varchar(30) \\
+  middle_name varchar(15) \\
+  sex char(1) \\
+  birth_number varchar(11) \\
+  family_status varchar(15) \\
+  email_address varchar(25) \\
+  phone_number varchar(15) \\
+  facebook_id varchar(50) \\
+  `instagram_id` varchar(50) \\
+  `id_ci_sex` bigint \\
+  `id_ci_marital_status` bigint \\
+  `id_ci_nationality` bigint \\
+\subsubsection{Provázání tabulky}
+tabulka struktura je provazana one to many
+\subsection{Tabulka `ci_nationality }
+\subsubsection{Struktura}
+  `id` serial \\
+  `code` smallint\\ 
+  `value` smallint \\
+  `short_description` varchar(90)\\ 
+  `long_description` text \\
+\subsubsection{Provázání tabulky}
+tabulka struktura je provazana one to many\\
+\subsection{Tabulka ci_marital_status}
+\subsubsection{Struktura}
+ `id` serial \\
+  `code` smallint\\ 
+  `value` smallint \\
+  `short_description` varchar(90) \\
+  `long_description` text\\
+\subsubsection{Provázání tabulky}
+tabulka struktura je provazana one to many
+\subsection{Tabulka ci_sex}
+\subsubsection{Struktura}
+`id` serial\\
+  `code` smallint \\ 
+  `value` smallint \\
+  `short_description` varchar(90)\\ 
+  `long_description` text \\
+\subsubsection{Provázání tabulky}
+tabulka struktura je provazana one to many
+\subsection{Tabulka company}
+\subsubsection{Struktura}
+`company_name` varchar(25) \\
+  `id` int \\
+  `dic` int \\
+  `company_legacy` varchar(5) \\ 
+  `facebook_id` varchar(50) \\
+  `responsible_person` varchar(30) ,\\
+  `email_address` varchar(25) \\
+  `phone_number` int \\
+  `birth_number_person` varchar(11)\\ 
+  `id_address_address` bigint \\
+\subsubsection{Provázání tabulky}
+tabulka struktura je provazana one to many
+\subsection{Tabulka  `a_t_p`}
+\subsubsection{Struktura}
+`birth_number_person` varchar(11)\\ 
+  `id_address_address` bigint \\
+  `id_ci_address_type` bigint \\
+\subsubsection{Provázání tabulky}
+tabulka struktura je provazana one to many
+\subsection{Tabulka address}
+\subsubsection{Struktura}
+ `id_address` bigint ,\\
+  `street_name` varchar(14)\\ 
+  `building_number_description` varchar(20)\\ 
+  `building_number_orientation` varchar(20) \\
+  `city` varchar(15) \\
+  `district` varchar(20)\\ 
+  `zip` smallint \\
+  `building_floor` smallint\\ 
+  `flat_number` smallint \\
+\subsubsection{Provázání tabulky}
+tabulka struktura je provazana one to many
+\subsection{Tabulka `ci_address_type`}
+\subsubsection{Struktura}
+ `id` bigint ,\\
+  `code` smallint\\ 
+  `value` smallint \\
+  `short_description` varchar(90) \\
+  `long_description` text\\
+\subsubsection{Provázání tabulky}
+tabulka struktura je provazana one to many
+\end{document}
+
+
